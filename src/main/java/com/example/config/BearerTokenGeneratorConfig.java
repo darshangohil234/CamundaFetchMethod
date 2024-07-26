@@ -27,14 +27,14 @@ public class BearerTokenGeneratorConfig {
             HttpEntity request = new HttpEntity(tokenRequestBody, headers);
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-            headers.set(BearerTokenUtils.GRANT_TYPE , BearerTokenUtils.GRANT_TYPEVALUE);//grantType);
-            headers.set(BearerTokenUtils.CLIENT_ID, BearerTokenUtils.CLIENT_IDVALUE);//clientId);
+            headers.set(BearerTokenUtils.GRANT_TYPE , BearerTokenUtils.GRANT_TYPEVALUE);
+            headers.set(BearerTokenUtils.CLIENT_ID, BearerTokenUtils.CLIENT_IDVALUE);
          
-            headers.set(BearerTokenUtils.CLIENT_SECRET_KEY, BearerTokenUtils.CLIENT_SECRET_KEYVALUE);//clientSecret);
-            headers.set(GlobalUtils.GlobalUtilHeaders.CONTENT_TYPE, BearerTokenUtils.CONTENTTYPEVALUE); //contentTypeEncoded);
-            tokenRequestBody.add(BearerTokenUtils.GRANT_TYPE, BearerTokenUtils.GRANT_TYPEVALUE); //grantType);
-            tokenRequestBody.add(BearerTokenUtils.CLIENT_ID, BearerTokenUtils.CLIENT_IDVALUE);//clientId);
-            tokenRequestBody.add(BearerTokenUtils.CLIENT_SECRET_KEY, BearerTokenUtils.CLIENT_SECRET_KEYVALUE);//clientSecret);
+            headers.set(BearerTokenUtils.CLIENT_SECRET_KEY, BearerTokenUtils.CLIENT_SECRET_KEYVALUE);
+            headers.set(GlobalUtils.GlobalUtilHeaders.CONTENT_TYPE, BearerTokenUtils.CONTENTTYPEVALUE);
+            tokenRequestBody.add(BearerTokenUtils.GRANT_TYPE, BearerTokenUtils.GRANT_TYPEVALUE); ;
+            tokenRequestBody.add(BearerTokenUtils.CLIENT_ID, BearerTokenUtils.CLIENT_IDVALUE);
+            tokenRequestBody.add(BearerTokenUtils.CLIENT_SECRET_KEY, BearerTokenUtils.CLIENT_SECRET_KEYVALUE);
             ResponseEntity<String> response = restTemplate.exchange(BearerTokenUtils.BEARERTOKENURL, HttpMethod.POST, request, String.class);
             JSONObject bearerTokenAccessKey = new JSONObject(response.getBody());
 

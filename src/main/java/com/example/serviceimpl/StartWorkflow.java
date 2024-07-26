@@ -4,7 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.pojo.TaskListVariableDetails;
 import io.camunda.zeebe.client.ZeebeClient;
+import lombok.SneakyThrows;
+
 import static com.example.utils.GlobalUtils.GlobalZeebeUtils.SUCCESS;
+
+import java.io.IOException;
 
 public class StartWorkflow {
 	
@@ -13,7 +17,8 @@ public class StartWorkflow {
 	@Autowired
 	ZeebeClient zeebeClient;
 	
-	public TaskListVariableDetails.TaskListVariableResponse startProcessInstance(String requestBody) throws Exception{
+	@SneakyThrows
+	public TaskListVariableDetails.TaskListVariableResponse startProcessInstance(String requestBody) throws IOException{
 	    log.info("Start workflow start..!!");
 		TaskListVariableDetails.TaskListVariableResponse taskListResponse = new TaskListVariableDetails.TaskListVariableResponse();
 	    try {

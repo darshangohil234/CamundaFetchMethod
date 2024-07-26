@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import com.example.utils.BearerTokenUtils;
 import com.example.utils.GlobalUtils.GlobalUtilHeaders;
 
+import lombok.SneakyThrows;
+
 @Component
 @Import(BearerTokenGeneratorConfig.class)
 public class HeaderConfig {
@@ -22,13 +24,21 @@ public class HeaderConfig {
     	this.bearerTokenGeneratorConfig = bearerTokenGeneratorConfig;
     }
 
+    @SneakyThrows
     public HttpHeaders addHeadersValue() throws IOException {
     	logger.info("Adding Header Values!!");
         HttpHeaders headers = new HttpHeaders();
+        try {
         headers.set(GlobalUtilHeaders.ACCEPT, GlobalUtilHeaders.APPLICATIONJSON);
         headers.set(GlobalUtilHeaders.CONTENT_TYPE, GlobalUtilHeaders.APPLICATIONJSON);  
 		headers.set(GlobalUtilHeaders.AUTHORIZATION, BearerTokenUtils.BEARER + bearerTokenGeneratorConfig.generateBearerToken());
-        return headers;
+        }catch (Exception ex) {
+        	logger.error(ex.getMessage());
+        	headers.set("Error", ex.getMessage());
+        	return headers;
+		}
+		
+		return headers;
     }
 	
 }

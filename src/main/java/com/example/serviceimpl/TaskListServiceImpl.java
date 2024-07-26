@@ -9,14 +9,15 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
 import com.example.config.HeaderConfig;
 import com.example.pojo.FetchResponseData;
 import com.example.utils.GlobalUtils.GlobalTasklistUtils;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 
 @Component
-@RequiredArgsConstructor
 @Import(HeaderConfig.class)
 public class TaskListServiceImpl {
 	
@@ -28,6 +29,7 @@ public class TaskListServiceImpl {
 		this.headerConfig = headerConfig;
 	}
 	
+	@SneakyThrows
 	public FetchResponseData<List<Object>> getAllTask(Object requestBody) throws IOException {
 		log.info("Service for GET A TASK FROM TASKLIST invoked..!!");
 		List<Object> respObj = new ArrayList<>();
