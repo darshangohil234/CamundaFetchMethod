@@ -1,5 +1,11 @@
 package com.example.utils;
 
+/**
+ * BearerTokenUtils class provides bearer token generation related data.
+ * This class contains static is data for generate bearer token.
+ * Please see the {@link com.example.utils} class for true identity
+ * <p>@author Darshan Gohil</p>
+ */
 public class BearerTokenUtils {
     public static final String GRANT_TYPE = "grant_type";
     public static final String CLIENT_ID = "client_id";
