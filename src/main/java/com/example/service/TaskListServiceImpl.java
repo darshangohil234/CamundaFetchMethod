@@ -8,7 +8,6 @@ import org.json.JSONArray;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import com.example.configuration.HeaderConfig;
 import com.example.domain.GenericResponseData;
 import com.example.utils.GlobalUtils.GlobalTasklistUtils;
